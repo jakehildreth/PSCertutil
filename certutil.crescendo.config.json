@@ -1,0 +1,207 @@
+{
+    "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2022-06",
+    "commands": [
+        {
+            "Verb": "Get",
+            "Noun": "PCDump",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [],
+            "Examples": []
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PCCASecurity",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\Security",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify Security"
+                }
+            ],
+            "Examples": []
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PCCAEnrollmentAgents",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\EnrollmentAgentRights",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify EnrollmentAgentRights"
+                }
+            ],
+            "Examples": []
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PCCAOfficers",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\OfficerRights",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify OfficerRights"
+                }
+            ],
+            "Examples": []
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PCCAInterfaceFlags",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\InterfaceFlags",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify InterfaceFlags"
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseInterfaceFlags"
+                }
+            ]
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PCCAAuditFilter",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\AuditFilter",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify AuditFilter"
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseAuditFilter"
+                }
+            ]
+        }
+    ]
+}
