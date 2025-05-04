@@ -18,7 +18,7 @@ ModuleVersion = '0.0.1'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = '08f91982-ddf1-4251-b523-f8e74ac0a608'
+GUID = '11c8bede-137c-4e1a-890b-710fd5dc4f29'
 
 # Author of this module
 Author = 'Administrator'
@@ -69,8 +69,9 @@ PowerShellVersion = '5.1.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-PCDump', 'Get-PCCAAdministrator', 'Get-PCCAEnrollmentAgent', 
-               'Get-PCCAOfficer', 'Get-PCCAInterfaceFlag', 'Get-PCCAAuditFilter'
+FunctionsToExport = 'Get-PCDump', 'Get-PCCAAdministrator', 'Get-PCCertificateManager', 
+               'Get-PCCAEnrollmentAgent', 'Get-PCCAOfficer', 'Get-PCCAInterfaceFlag', 
+               'Get-PCCAAuditFilter'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -123,7 +124,7 @@ PrivateData = @{
 
 
     # CrescendoGenerated
-    CrescendoGenerated = '05/04/2025 07:57:17'
+    CrescendoGenerated = '05/04/2025 08:01:14'
 
     # CrescendoVersion
     CrescendoVersion = '1.1.0'

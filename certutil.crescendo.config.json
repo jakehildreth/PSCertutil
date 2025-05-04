@@ -58,6 +58,48 @@
         },
         {
             "Verb": "Get",
+            "Noun": "PCCertificateManager",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "/config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
+                },
+                {
+                    "OriginalName": "/getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\Security",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify Security"
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseCertificateManager"
+                }
+            ]
+        },
+        {
+            "Verb": "Get",
             "Noun": "PCCAEnrollmentAgent",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
