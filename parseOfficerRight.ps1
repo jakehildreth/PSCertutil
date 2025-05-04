@@ -1,33 +1,33 @@
-function parseEnrollmentAgent {
+function parseOfficerRight {
     param (
-        $EnrollmentAgent
+        $OfficerRight
     )
 
-    $EnrollmentAgentBlob = $EnrollmentAgent | Select-String '^0\w{3}\s+' | ForEach-Object {                                                
+    $OfficerRightBlob = $OfficerRight | Select-String '^0\w{3}\s+' | ForEach-Object {                                                
         ($_.ToString().substring(4) -replace '.{16}$', '').Replace(' ', '').Replace("`t", '')
     }
 
-    $EnrollmentAgentByteArray = $EnrollmentAgentBlob -replace '\s+', '' -split '(?<=\G.{2})' | Where-Object { $_ } | ForEach-Object {
+    $OfficerRightByteArray = $OfficerRightBlob -replace '\s+', '' -split '(?<=\G.{2})' | Where-Object { $_ } | ForEach-Object {
         [System.Convert]::ToByte($_, 16)
     }
 
     # Everything from here down is stolen shamelessly from Vadims Podāns (https://sysadmins.lv)
-    $SecurityDescriptor = [System.Security.AccessControl.RawSecurityDescriptor]::new($EnrollmentAgentByteArray, 0)
+    $SecurityDescriptor = [System.Security.AccessControl.RawSecurityDescriptor]::new($OfficerRightByteArray, 0)
     foreach ($commonAce in $SecurityDescriptor.DiscretionaryAcl) {
         # get ACE in binary form
         $aceBytes = New-Object byte[] -ArgumentList $commonAce.BinaryLength
         $commonAce.GetBinaryForm($aceBytes, 0)
         try {
-            $EnrollmentAgent = $commonAce.SecurityIdentifier.translate([Security.Principal.NTAccount]).Value
+            $CertificateManager = $commonAce.SecurityIdentifier.translate([Security.Principal.NTAccount]).Value
         } catch {
-            $EnrollmentAgent = $commonAce.SecurityIdentifier.Value
+            $CertificateManager = $commonAce.SecurityIdentifier.Value
         }
         # set offset to application-specific data by skipping ACE header and
-        # EnrollmentAgent's SID
+        # Officer's SID
         $offset = $commonAce.BinaryLength - $commonAce.OpaqueLength
         $SidCount = [BitConverter]::ToUInt32($aceBytes[$offset..($offset + 3)], 0)
         # initialize array to store array of securable principals
-        $CanEnrollOnBehalfOf = @()
+        $CanApproveRequestsFor = @()
         # perform this task only if SID count > 0.
         if ($SidCount -gt 0) {
             # exclude ACE header and trustee SID
@@ -44,7 +44,7 @@ function parseEnrollmentAgent {
                 [Byte[]]$SidBytes = $aceBytes[$SidStartOffset..($SidStartOffset + $SidLength - 1)]
                 # add resolved SID to an array of securable principals:
                 $SID = New-Object Security.Principal.SecurityIdentifier $SidBytes, 0
-                $CanEnrollOnBehalfOf += $SID.translate([Security.Principal.NTAccount]).Value
+                $CanApproveRequestsFor += $SID.translate([Security.Principal.NTAccount]).Value
                 # move offset over current SID to a next one (if exist)
                 $SidStartOffset += $SidLength
             }
@@ -59,10 +59,10 @@ function parseEnrollmentAgent {
         }
         # prepare fake/simplified ACE object
         [PSCustomObject]@{
-            EnrollmentAgent     = $EnrollmentAgent
-            AceType             = $commonAce.AceQualifier
-            CanEnrollOnBehalfOf = $CanEnrollOnBehalfOf
-            Template            = if ($oid) {
+            CertificateManager    = $CertificateManager
+            AceType               = $commonAce.AceQualifier
+            CanApproveRequestsFor = $CanApproveRequestsFor
+            Template              = if ($oid) {
                 if ([string]::IsNullOrEmpty($oid.FriendlyName)) { $oid.Value } else { $oid.FriendlyName }
             } else {
                 "<Any>"

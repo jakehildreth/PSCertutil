@@ -18,7 +18,7 @@ ModuleVersion = '0.0.1'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'ed18436a-46cb-4f1e-9230-05ec6adb3a48'
+GUID = '04d7d512-5cd1-44b4-9f2d-4bc83f6904a5'
 
 # Author of this module
 Author = 'Administrator'
@@ -70,8 +70,8 @@ PowerShellVersion = '5.1.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-PCDump', 'Get-PCCAAdministrator', 'Get-PCCertificateManager', 
-               'Get-PCEnrollmentAgent', 'Get-PCCAOfficer', 'Get-PCCAInterfaceFlag', 
-               'Get-PCCAAuditFilter'
+               'Get-PCEnrollmentAgent', 'Get-PCOfficerRight', 'Get-PCInterfaceFlag', 
+               'Get-PCAuditFilter'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -127,7 +127,7 @@ PrivateData = @{
     CrescendoVersion = '1.1.0'
 
     # CrescendoGenerated
-    CrescendoGenerated = '05/04/2025 15:18:25'
+    CrescendoGenerated = '05/04/2025 15:36:30'
 
 } # End of PrivateData hashtable
 
