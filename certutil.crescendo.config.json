@@ -100,8 +100,9 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCAEnrollmentAgent",
+            "Noun": "PCEnrollmentAgent",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "OriginalCommandElements": ["/v"],
             "Platform": [
                 "Windows"
             ],
@@ -131,7 +132,14 @@
                     "Description": "Specify EnrollmentAgentRights"
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseEnrollmentAgent"
+                }
+            ]
         },
         {
             "Verb": "Get",
