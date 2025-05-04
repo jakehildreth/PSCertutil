@@ -16,7 +16,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCASecurity",
+            "Noun": "PCCAAdministrator",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -47,11 +47,18 @@
                     "Description": "Specify Security"
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseCAAdministrator"
+                }
+            ]
         },
         {
             "Verb": "Get",
-            "Noun": "PCCAEnrollmentAgents",
+            "Noun": "PCCAEnrollmentAgent",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -86,7 +93,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCAOfficers",
+            "Noun": "PCCAOfficer",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -121,7 +128,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCAInterfaceFlags",
+            "Noun": "PCCAInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["/v"],
             "Platform": [
@@ -158,7 +165,7 @@
                 {
                     "ParameterSetName": "Default",
                     "HandlerType": "Function",
-                    "Handler": "parseInterfaceFlags"
+                    "Handler": "parseInterfaceFlag"
                 }
             ]
         },

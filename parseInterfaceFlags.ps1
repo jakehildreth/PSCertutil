@@ -1,9 +1,9 @@
-function parseInterfaceFlags {
+function parseInterfaceFlag {
     param (
-        $InterfaceFlags
+        $InterfaceFlag
     )
-    
-    [array]$InterfaceFlagCollection = $InterfaceFlags | ForEach-Object {
+
+    [array]$InterfaceFlagCollection = $InterfaceFlag | ForEach-Object {
         $Flag = ($_.trim().split(' -- '))[0] | Select-String 'IF_'
         if ($null -ne $Flag) {
             if ($Flag -match '^\(IF_') {

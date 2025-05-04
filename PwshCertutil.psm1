@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 05/04/2025 07:05:38
+# Generated at: 05/04/2025 07:57:17
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -274,7 +274,7 @@ CertUtil: -? command completed successfully.
 }
 
 
-function Get-PCCASecurity
+function Get-PCCAAdministrator
 {
 [PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
 [CmdletBinding()]
@@ -313,7 +313,9 @@ BEGIN {
                }
     }
 
-    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+    $__outputHandlers = @{
+        Default = @{ StreamOutput = $False; Handler = 'parseCAAdministrator' }
+    }
 }
 
 PROCESS {
@@ -548,7 +550,7 @@ Specify Security
 }
 
 
-function Get-PCCAEnrollmentAgents
+function Get-PCCAEnrollmentAgent
 {
 [PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
 [CmdletBinding()]
@@ -822,7 +824,7 @@ Specify EnrollmentAgentRights
 }
 
 
-function Get-PCCAOfficers
+function Get-PCCAOfficer
 {
 [PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
 [CmdletBinding()]
@@ -1096,7 +1098,7 @@ Specify OfficerRights
 }
 
 
-function Get-PCCAInterfaceFlags
+function Get-PCCAInterfaceFlag
 {
 [PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
 [CmdletBinding()]
@@ -1136,7 +1138,7 @@ BEGIN {
     }
 
     $__outputHandlers = @{
-        Default = @{ StreamOutput = $False; Handler = 'parseInterfaceFlags' }
+        Default = @{ StreamOutput = $False; Handler = 'parseInterfaceFlag' }
     }
 }
 
@@ -1649,12 +1651,27 @@ Specify AuditFilter
 }
 
 
-function parseInterfaceFlags {
+function parseCAAdministrator {
     param (
-        $InterfaceFlags
+        $CAAdministrator
     )
-    # TODO - Figure out why disabled flags are not being parsed correctly.
-    [array]$InterfaceFlagCollection = $InterfaceFlags | ForEach-Object {
+
+    [array] $CAAdministratorCollection = $CAAdministrator | ForEach-Object {
+        if ($_ -match '^.*Allow.*CA Administrator.*?\s+([^\s\\]+\\.+)$') {
+            [PSCustomObject]@{
+                CAAdministrator = $matches[1]
+            }
+        }
+    }
+
+    $CAAdministratorCollection
+}
+function parseInterfaceFlag {
+    param (
+        $InterfaceFlag
+    )
+
+    [array]$InterfaceFlagCollection = $InterfaceFlag | ForEach-Object {
         $Flag = ($_.trim().split(' -- '))[0] | Select-String 'IF_'
         if ($null -ne $Flag) {
             if ($Flag -match '^\(IF_') {
