@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 01/18/2025 15:47:33
+# Generated at: 05/04/2025 07:05:38
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -249,7 +249,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -515,7 +514,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -790,7 +788,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1065,7 +1062,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1151,6 +1147,7 @@ PROCESS {
     $__commandArgs = @()
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
+    $__commandArgs += '/v'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
@@ -1195,7 +1192,7 @@ PROCESS {
     $__commandArgs = $__commandArgs | Where-Object {$_ -ne $null}
     if ($__boundParameters["Debug"]){wait-debugger}
     if ( $__boundParameters["Verbose"]) {
-         Write-Verbose -Verbose -Message "C:\Windows\system32\certutil.exe"
+         Write-Verbose -Verbose -Message "C:/Windows/system32/certutil.exe"
          $__commandArgs | Write-Verbose -Verbose
     }
     $__handlerInfo = $__outputHandlers[$PSCmdlet.ParameterSetName]
@@ -1203,21 +1200,21 @@ PROCESS {
         $__handlerInfo = $__outputHandlers["Default"] # Guaranteed to be present
     }
     $__handler = $__handlerInfo.Handler
-    if ( $PSCmdlet.ShouldProcess("C:\Windows\system32\certutil.exe $__commandArgs")) {
+    if ( $PSCmdlet.ShouldProcess("C:/Windows/system32/certutil.exe $__commandArgs")) {
     # check for the application and throw if it cannot be found
-        if ( -not (Get-Command -ErrorAction Ignore "C:\Windows\system32\certutil.exe")) {
-          throw "Cannot find executable 'C:\Windows\system32\certutil.exe'"
+        if ( -not (Get-Command -ErrorAction Ignore "C:/Windows/system32/certutil.exe")) {
+          throw "Cannot find executable 'C:/Windows/system32/certutil.exe'"
         }
         if ( $__handlerInfo.StreamOutput ) {
             if ( $null -eq $__handler ) {
-                & "C:\Windows\system32\certutil.exe" $__commandArgs
+                & "C:/Windows/system32/certutil.exe" $__commandArgs
             }
             else {
-                & "C:\Windows\system32\certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError | & $__handler
+                & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError | & $__handler
             }
         }
         else {
-            $result = & "C:\Windows\system32\certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError
+            $result = & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError
             & $__handler $result
         }
     }
@@ -1342,7 +1339,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1362,7 +1358,7 @@ CertUtil -v -?           -- Display all help text for all verbs
 
 CertUtil: -? command completed successfully.
 
-.DESCRIPTION See help for C:\Windows\system32\certutil.exe
+.DESCRIPTION See help for C:/Windows/system32/certutil.exe
 
 .PARAMETER CAFullName
 Specify the Full Name of the Certificate Authority in the form 'FQDN\CA Name'
@@ -1619,7 +1615,6 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
-  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1658,15 +1653,31 @@ function parseInterfaceFlags {
     param (
         $InterfaceFlags
     )
+    # TODO - Figure out why disabled flags are not being parsed correctly.
+    [array]$InterfaceFlagCollection = $InterfaceFlags | ForEach-Object {
+        $Flag = ($_.trim().split(' -- '))[0] | Select-String 'IF_'
+        if ($null -ne $Flag) {
+            if ($Flag -match '^\(IF_') {
+                $Flag = $Flag.ToString().Substring(1)
+                $Enabled = $false
+            } else {
+                $Enabled = $true
+            }
 
-    [array]$InterfaceFlags | ForEach-Object {
-        ($_.trim().split(' -- '))[0] | Select-String 'IF_' | Out-String
+            [PSCustomObject]@{
+                InterfaceFlag = $Flag
+                Enabled       = $Enabled
+            }
+        }
     }
+
+    $InterfaceFlagCollection
 }
 function parseAuditFilter {
     param (
         $CertutilAudit
     )
+    # TODO: Translate AuditFilter to human-readable format
     try {
         [string]$AuditFilter = $CertutilAudit | Select-String 'AuditFilter REG_DWORD = ' | Select-String '\('
         [int]$AuditFilter = $AuditFilter.split('(')[1].split(')')[0]

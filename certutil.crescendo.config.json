@@ -122,7 +122,8 @@
         {
             "Verb": "Get",
             "Noun": "PCCAInterfaceFlags",
-            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["/v"],
             "Platform": [
                 "Windows"
             ],
