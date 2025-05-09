@@ -26,7 +26,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -36,7 +36,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\Security",
                     "ParameterType": "string",
@@ -68,7 +68,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -78,7 +78,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\Security",
                     "ParameterType": "string",
@@ -102,7 +102,7 @@
             "Verb": "Get",
             "Noun": "PCEnrollmentAgent",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
-            "OriginalCommandElements": ["/v"],
+            "OriginalCommandElements": ["-v"],
             "Platform": [
                 "Windows"
             ],
@@ -111,7 +111,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -121,7 +121,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\EnrollmentAgentRights",
                     "ParameterType": "string",
@@ -145,7 +145,7 @@
             "Verb": "Get",
             "Noun": "PCOfficerRight",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
-            "OriginalCommandElements": ["/v"],
+            "OriginalCommandElements": ["-v"],
             "Platform": [
                 "Windows"
             ],
@@ -154,7 +154,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -164,7 +164,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\OfficerRights",
                     "ParameterType": "string",
@@ -188,7 +188,7 @@
             "Verb": "Get",
             "Noun": "PCEditFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
-            "OriginalCommandElements": ["/v"],
+            "OriginalCommandElements": ["-v"],
             "Platform": [
                 "Windows"
             ],
@@ -197,7 +197,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -207,7 +207,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "policy\\EditFlags",
                     "ParameterType": "string",
@@ -231,7 +231,7 @@
             "Verb": "Get",
             "Noun": "PCInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
-            "OriginalCommandElements": ["/v"],
+            "OriginalCommandElements": ["-v"],
             "Platform": [
                 "Windows"
             ],
@@ -240,7 +240,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -250,7 +250,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\InterfaceFlags",
                     "ParameterType": "string",
@@ -282,7 +282,7 @@
             "NoInvocation": false,
             "Parameters": [
                 {
-                    "OriginalName": "/config",
+                    "OriginalName": "-config",
                     "Name": "CAFullName",
                     "ParameterType": "string",
                     "ParameterSetName": [
@@ -292,7 +292,7 @@
                     "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'"
                 },
                 {
-                    "OriginalName": "/getreg",
+                    "OriginalName": "-getreg",
                     "Name": "GetReg",
                     "DefaultValue": "CA\\AuditFilter",
                     "ParameterType": "string",

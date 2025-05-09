@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 05/05/2025 20:45:10
+# Generated at: 05/09/2025 07:57:02
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -292,7 +292,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -302,7 +302,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -568,7 +568,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -578,7 +578,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -844,7 +844,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -854,7 +854,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -877,7 +877,7 @@ PROCESS {
     $__commandArgs = @()
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
-    $__commandArgs += '/v'
+    $__commandArgs += '-v'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
@@ -1121,7 +1121,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1131,7 +1131,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1154,7 +1154,7 @@ PROCESS {
     $__commandArgs = @()
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
-    $__commandArgs += '/v'
+    $__commandArgs += '-v'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
@@ -1398,7 +1398,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1408,7 +1408,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1431,7 +1431,7 @@ PROCESS {
     $__commandArgs = @()
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
-    $__commandArgs += '/v'
+    $__commandArgs += '-v'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
@@ -1675,7 +1675,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1685,7 +1685,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1708,7 +1708,7 @@ PROCESS {
     $__commandArgs = @()
     $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
     if ($__boundParameters["Debug"]){wait-debugger}
-    $__commandArgs += '/v'
+    $__commandArgs += '-v'
     foreach ($paramName in $__boundParameters.Keys|
             Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
             Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
@@ -1952,7 +1952,7 @@ BEGIN {
     $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
     $__PARAMETERMAP = @{
          CAFullName = @{
-               OriginalName = '/config'
+               OriginalName = '-config'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -1962,7 +1962,7 @@ BEGIN {
                ArgumentTransformType = 'inline'
                }
          GetReg = @{
-               OriginalName = '/getreg'
+               OriginalName = '-getreg'
                OriginalPosition = '0'
                Position = '2147483647'
                ParameterType = 'string'
@@ -2391,7 +2391,6 @@ function parseEditFlag {
 
     [array]$EditFlagCollection = $EditFlag | ForEach-Object {
         $Flag = ($_.trim().split(' -- '))[0] | Select-String 'EDITF_'
-        Write-Host $_
         if ($null -ne $Flag) {
             if ($Flag -match '^\(EDITF_') {
                 $Flag = $Flag.ToString().Substring(1)
