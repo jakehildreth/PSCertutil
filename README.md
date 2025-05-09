@@ -1,7 +1,7 @@
 # PwshCertutil - A Powershell 7 Wrapper for certutil.exe
 Built w/ ❤️ (and [Crescendo](https://github.com/PowerShell/Crescendo)) 
 
-Current Functions:
+Current Cmdlets:
 * Get-PCAuditFilter: Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks.
 * Get-PCCAAdministrator: Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
 * Get-PCCertificateManager: Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
