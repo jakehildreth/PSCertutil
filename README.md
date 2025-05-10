@@ -1,8 +1,23 @@
 # PSCertutil - A Powershell Wrapper for certutil.exe
-Built w/ ❤️ (and [Crescendo](https://github.com/PowerShell/Crescendo)) 
+Built w/ ❤️ and [Crescendo](https://github.com/PowerShell/Crescendo)
 
-Current Cmdlets:
-* **Get-PCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks.
+certutil.exe is a very old-school way to interact with Active Directory Certificate Services. It's shockingly powerful, but its output *sucks* to work with in PowerShell.
+
+PSCertutil makes using certutil.exe a little more PowerShell-y:
+* standard Verb-Noun function names
+* structured output
+
+It also provides some ready-made functions to get the most interesting pieces of information (read: stuff I needed to build for Locksmith 2).
+
+## Installation
+
+``` powershell
+git clone https://github.com/jakehildreth/PSCertutil
+Import-Module .\PSCertutil\PSCertutil.psd1
+```
+
+## Current Cmdlets
+* **Get-PCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks. Will soon have human readable output for auditing configuration.
 * **Get-PCCAAdministrator:** Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
 * **Get-PCCertificateManager:** Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
 * **Get-PCDump:** Identical to "certutil -v -dump". Currently unparsed.
@@ -11,7 +26,7 @@ Current Cmdlets:
 * **Get-PCInterfaceFlag:** Gets the CA\InterfaceFlags registry entry to display the current state of each interface flag. Used to perform ESC11 checks.
 * **Get-PCOfficerRight:** Gets Officer Rights configuration. Properly restricting Officer Rights can make a wide range of attacks more difficult.
 
-Future Cmdlets:
+## Future Cmdlets
 * **Get-PCRecentlyIssued**
 * **Get-PCRecentlyFailed** 
 * **Get-PCPendingRequests**/**Get-PCQueued**
