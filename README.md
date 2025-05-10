@@ -5,9 +5,12 @@ certutil.exe is a very old-school way to interact with Active Directory Certific
 
 PSCertutil makes using certutil.exe a little more PowerShell-y:
 * standard Verb-Noun function names
+* common parameters
 * structured output
 
 It also provides some ready-made functions to get the most interesting pieces of information (read: stuff I needed to build for Locksmith 2).
+
+*Note: This is an MVP, not a full-featured tool. There's almost no error handling and you can only check one CA at a time.*
 
 ## Installation
 
