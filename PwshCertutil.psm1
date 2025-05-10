@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 05/09/2025 07:57:02
+# Generated at: 05/10/2025 05:56:13
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -303,7 +303,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -579,7 +579,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -855,7 +855,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -1132,7 +1132,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -1409,7 +1409,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -1686,7 +1686,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
@@ -1963,7 +1963,7 @@ BEGIN {
                }
          GetReg = @{
                OriginalName = '-getreg'
-               OriginalPosition = '0'
+               OriginalPosition = '1'
                Position = '2147483647'
                ParameterType = 'string'
                ApplyToExecutable = $False
