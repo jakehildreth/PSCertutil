@@ -34,13 +34,6 @@ Import-Module .\PSCertutil\PSCertutil.psd1
 * **Get-PCRecentlyFailed** 
 * **Get-PCPendingRequests**/**Get-PCQueued**
 * **Get-PCEffective**/**Get-PCActive**
-* **Get-PCSuspiciousEnrollment:**
-    * All requests w/SAN of Tier 0 objects
-    * Compare total enrollment volume vs issued w/SAN
-    * Compare typical requestor vs individual requests
-    * Compare volume of Requestor = SAN vs Requestor != SAN
-    * Identify non-standard issuance times (either time of day of time of year)
-    * Identify Manager Approval bypass (temp disable of Manager Approval)
 
 ## Thanks
 * Brainstorming new functions: [@techSpence](https://github.com/techspence)
