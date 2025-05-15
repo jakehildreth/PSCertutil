@@ -23,6 +23,7 @@ Import-Module .\PSCertutil\PSCertutil.psd1
 * **Get-PCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks. Will soon have human readable output for auditing configuration.
 * **Get-PCCAAdministrator:** Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
 * **Get-PCCertificateManager:** Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
+* **Get-PCDisableExtensionList:** Gets the policy\DisableExtensionList registry entry and returns objects for all disabled extensions. Used to perform ESC16 checks.
 * **Get-PCDump:** Identical to "certutil -v -dump". Currently unparsed.
 * **Get-PCEditFlag:** Gets the CA\EditFlags registry entry to display the current state of each edit flag. Used to perform ESC6 checks.
 * **Get-PCEnrollmentAgent:** Gets Enrollment Agent configuration. Properly restricting Enrollment Agent rights can prevent ESC3 attacks.

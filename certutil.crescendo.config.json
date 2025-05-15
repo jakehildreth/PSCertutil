@@ -284,6 +284,51 @@
         },
         {
             "Verb": "Get",
+            "Noun": "PCDisableExtensionList",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["-v"],
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "policy\\DisableExtensionList",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify policy\\DisableExtensionList",
+                    "OriginalPosition": 1
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseDisableExtensionList"
+                }
+            ]
+        },
+        {
+            "Verb": "Get",
             "Noun": "PCAuditFilter",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
