@@ -18,7 +18,7 @@ ModuleVersion = '0.0.1'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'd48773fa-8e68-44f2-9ea8-2ab82ecb0d25'
+GUID = '7e0199a6-34e8-42f6-ad71-6d6f56607c9b'
 
 # Author of this module
 Author = 'Administrator'
@@ -72,6 +72,7 @@ PowerShellVersion = '5.1.0'
 FunctionsToExport = 'Get-PCDump', 'Get-PCCAAdministrator', 'Get-PCCertificateManager', 
                'Get-PCEnrollmentAgent', 'Get-PCOfficerRight', 'Get-PCEditFlag', 
                'Enable-PCEditFlag', 'Disable-PCEditFlag', 'Get-PCInterfaceFlag', 
+               'Enable-PCInterfaceFlag', 'Disable-PCInterfaceFlag', 
                'Get-PCDisableExtensionList', 'Get-PCAuditFilter'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -125,7 +126,7 @@ PrivateData = @{
 
 
     # CrescendoGenerated
-    CrescendoGenerated = '07/20/2025 15:59:02'
+    CrescendoGenerated = '07/20/2025 16:15:41'
 
     # CrescendoVersion
     CrescendoVersion = '1.1.0'

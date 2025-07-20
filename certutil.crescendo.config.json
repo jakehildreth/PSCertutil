@@ -272,7 +272,7 @@
                     "Description": "Specify EditFlags",
                     "OriginalPosition": 1
                 },
-                                {
+                {
                     "OriginalName": "+",
                     "Name": "Flag",
                     "ParameterType": "string",
@@ -290,7 +290,7 @@
             ],
             "Examples": []
         },
-                {
+        {
             "Verb": "Disable",
             "Noun": "PCEditFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
@@ -325,7 +325,7 @@
                     "Description": "Specify EditFlags",
                     "OriginalPosition": 1
                 },
-                                {
+                {
                     "OriginalName": "-",
                     "Name": "Flag",
                     "ParameterType": "string",
@@ -387,6 +387,112 @@
                     "Handler": "parseInterfaceFlag"
                 }
             ]
+        },
+        {
+            "Verb": "Enable",
+            "Noun": "PCInterfaceFlag",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["-v"],
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-setreg",
+                    "Name": "SetReg",
+                    "DefaultValue": "CA\\InterfaceFlags",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify InterfaceFlags",
+                    "OriginalPosition": 1
+                },
+                {
+                    "OriginalName": "+",
+                    "Name": "Flag",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "NoGap": true,
+                    "AdditionalParameterAttributes": [
+                        "[ValidateSet('IF_LOCKICERTREQUEST','IF_NOREMOTEICERTREQUEST','IF_NOLOCALICERTREQUEST','IF_NORPCICERTREQUEST','IF_NOREMOTEICERTADMIN','IF_NOLOCALICERTADMIN','IF_NOREMOTEICERTADMINBACKUP','IF_NOLOCALICERTADMINBACKUP','IF_NOSNAPSHOTBACKUP','IF_ENFORCEENCRYPTICERTREQUEST','IF_ENFORCEENCRYPTICERTADMIN','IF_ENABLEEXITKEYRETRIEVAL','IF_ENABLEADMINASAUDITOR','IF_ENABLEPRESIGNSUPPORT')]"
+                    ],
+                    "Description": "Specify Flag to Enable",
+                    "OriginalPosition": 2
+                }
+            ],
+            "Examples": []
+        },
+        {
+            "Verb": "Disable",
+            "Noun": "PCInterfaceFlag",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["-v"],
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-setreg",
+                    "Name": "SetReg",
+                    "DefaultValue": "CA\\InterfaceFlags",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify InterfaceFlags",
+                    "OriginalPosition": 1
+                },
+                {
+                    "OriginalName": "-",
+                    "Name": "Flag",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "NoGap": true,
+                    "AdditionalParameterAttributes": [
+                        "[ValidateSet('IF_LOCKICERTREQUEST','IF_NOREMOTEICERTREQUEST','IF_NOLOCALICERTREQUEST','IF_NORPCICERTREQUEST','IF_NOREMOTEICERTADMIN','IF_NOLOCALICERTADMIN','IF_NOREMOTEICERTADMINBACKUP','IF_NOLOCALICERTADMINBACKUP','IF_NOSNAPSHOTBACKUP','IF_ENFORCEENCRYPTICERTREQUEST','IF_ENFORCEENCRYPTICERTADMIN','IF_ENABLEEXITKEYRETRIEVAL','IF_ENABLEADMINASAUDITOR','IF_ENABLEPRESIGNSUPPORT')]"
+                    ],
+                    "Description": "Specify Flag to Disable",
+                    "OriginalPosition": 2
+                }
+            ],
+            "Examples": []
         },
         {
             "Verb": "Get",
