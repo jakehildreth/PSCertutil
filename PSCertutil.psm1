@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 05/15/2025 05:37:34
+# Generated at: 07/20/2025 15:59:02
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -249,6 +249,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -516,6 +517,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -792,6 +794,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1069,6 +1072,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1346,6 +1350,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1623,6 +1628,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -1650,6 +1656,592 @@ Specify the Full Name of the Certificate Authority in the form 'FQDN\CA Name'
 
 .PARAMETER GetReg
 Specify EditFlags
+
+
+
+#>
+}
+
+
+function Enable-PCEditFlag
+{
+[PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
+[CmdletBinding()]
+
+param(
+[Parameter(Mandatory=$true,ParameterSetName='Default')]
+[string]$CAFullName,
+[Parameter(ParameterSetName='Default')]
+[PSDefaultValue(Value="policy\EditFlags")]
+[string]$SetReg = "policy\EditFlags",
+[ValidateSet('EDITF_REQUESTEXTENSIONLIST','EDITF_ENABLEREQUESTEXTENSIONS','EDITF_DISABLEEXTENSIONLIST','EDITF_ADDOLDKEYUSAGE','EDITF_ADDOLDCERTTYPE','EDITF_ATTRIBUTEENDDATE','EDITF_BASICCONSTRAINTSCRITICAL','EDITF_BASICCONSTRAINTSCA','EDITF_ENABLEAKIKEYID','EDITF_ATTRIBUTECA','EDITF_IGNOREREQUESTERGROUP','EDITF_ENABLEAKIISSUERNAME','EDITF_ENABLEAKIISSUERSERIAL','EDITF_ENABLEAKICRITICAL','EDITF_SERVERUPGRADED','EDITF_ATTRIBUTEEKU','EDITF_ENABLEDEFAULTSMIME','EDITF_EMAILOPTIONAL','EDITF_ATTRIBUTESUBJECTALTNAME2','EDITF_ENABLELDAPREFERRALS','EDITF_ENABLECHASECLIENTDC','EDITF_AUDITCERTTEMPLATELOAD','EDITF_DISABLEOLDOSCNUPN','EDITF_DISABLELDAPPACKAGELIST','EDITF_ENABLEUPNMAP','EDITF_ENABLEOCSPREVNOCHECK','EDITF_ENABLERENEWONBEHALFOF')]
+[Parameter(Mandatory=$true,ParameterSetName='Default')]
+[string]$Flag
+    )
+
+BEGIN {
+    $PSNativeCommandUseErrorActionPreference = $false
+    $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
+    $__PARAMETERMAP = @{
+         CAFullName = @{
+               OriginalName = '-config'
+               OriginalPosition = '0'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $False
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+         SetReg = @{
+               OriginalName = '-setreg'
+               OriginalPosition = '1'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $False
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+         Flag = @{
+               OriginalName = '+'
+               OriginalPosition = '2'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $True
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+    }
+
+    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+}
+
+PROCESS {
+    $__boundParameters = $PSBoundParameters
+    $__defaultValueParameters = $PSCmdlet.MyInvocation.MyCommand.Parameters.Values.Where({$_.Attributes.Where({$_.TypeId.Name -eq "PSDefaultValueAttribute"})}).Name
+    $__defaultValueParameters.Where({ !$__boundParameters["$_"] }).ForEach({$__boundParameters["$_"] = get-variable -value $_})
+    $__commandArgs = @()
+    $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
+    if ($__boundParameters["Debug"]){wait-debugger}
+    $__commandArgs += '-v'
+    foreach ($paramName in $__boundParameters.Keys|
+            Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
+            Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
+            Sort-Object {$__PARAMETERMAP[$_].OriginalPosition}) {
+        $value = $__boundParameters[$paramName]
+        $param = $__PARAMETERMAP[$paramName]
+        if ($param) {
+            if ($value -is [switch]) {
+                 if ($value.IsPresent) {
+                     if ($param.OriginalName) { $__commandArgs += $param.OriginalName }
+                 }
+                 elseif ($param.DefaultMissingValue) { $__commandArgs += $param.DefaultMissingValue }
+            }
+            elseif ( $param.NoGap ) {
+                # if a transform is specified, use it and the construction of the values is up to the transform
+                if($param.ArgumentTransform -ne '$args') {
+                    $transform = $param.ArgumentTransform
+                    if($param.ArgumentTransformType -eq 'inline') {
+                        $transform = [scriptblock]::Create($param.ArgumentTransform)
+                    }
+                    $__commandArgs += & $transform $value
+                }
+                else {
+                    $pFmt = "{0}{1}"
+                    # quote the strings if they have spaces
+                    if($value -match "\s") { $pFmt = "{0}""{1}""" }
+                    $__commandArgs += $pFmt -f $param.OriginalName, $value
+                }
+            }
+            else {
+                if($param.OriginalName) { $__commandArgs += $param.OriginalName }
+                if($param.ArgumentTransformType -eq 'inline') {
+                   $transform = [scriptblock]::Create($param.ArgumentTransform)
+                }
+                else {
+                   $transform = $param.ArgumentTransform
+                }
+                $__commandArgs += & $transform $value
+            }
+        }
+    }
+    $__commandArgs = $__commandArgs | Where-Object {$_ -ne $null}
+    if ($__boundParameters["Debug"]){wait-debugger}
+    if ( $__boundParameters["Verbose"]) {
+         Write-Verbose -Verbose -Message "C:/Windows/system32/certutil.exe"
+         $__commandArgs | Write-Verbose -Verbose
+    }
+    $__handlerInfo = $__outputHandlers[$PSCmdlet.ParameterSetName]
+    if (! $__handlerInfo ) {
+        $__handlerInfo = $__outputHandlers["Default"] # Guaranteed to be present
+    }
+    $__handler = $__handlerInfo.Handler
+    if ( $PSCmdlet.ShouldProcess("C:/Windows/system32/certutil.exe $__commandArgs")) {
+    # check for the application and throw if it cannot be found
+        if ( -not (Get-Command -ErrorAction Ignore "C:/Windows/system32/certutil.exe")) {
+          throw "Cannot find executable 'C:/Windows/system32/certutil.exe'"
+        }
+        if ( $__handlerInfo.StreamOutput ) {
+            if ( $null -eq $__handler ) {
+                & "C:/Windows/system32/certutil.exe" $__commandArgs
+            }
+            else {
+                & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError | & $__handler
+            }
+        }
+        else {
+            $result = & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError
+            & $__handler $result
+        }
+    }
+    # be sure to let the user know if there are any errors
+    Pop-CrescendoNativeError -EmitAsError
+  } # end PROCESS
+
+<#
+.SYNOPSIS
+
+Verbs:
+  -dump             -- Dump configuration information or file
+  -dumpPFX          -- Dump PFX structure
+  -asn              -- Parse ASN.1 file
+
+  -decodehex        -- Decode hexadecimal-encoded file
+  -decode           -- Decode Base64-encoded file
+  -encode           -- Encode file to Base64
+
+  -deny             -- Deny pending request
+  -resubmit         -- Resubmit pending request
+  -setattributes    -- Set attributes for pending request
+  -setextension     -- Set extension for pending request
+  -revoke           -- Revoke Certificate
+  -isvalid          -- Display current certificate disposition
+
+  -getconfig        -- Get default configuration string
+  -ping             -- Ping Active Directory Certificate Services Request interface
+  -pingadmin        -- Ping Active Directory Certificate Services Admin interface
+  -CAInfo           -- Display CA Information
+  -ca.cert          -- Retrieve the CA's certificate
+  -ca.chain         -- Retrieve the CA's certificate chain
+  -GetCRL           -- Get CRL
+  -CRL              -- Publish new CRLs [or delta CRLs only]
+  -shutdown         -- Shutdown Active Directory Certificate Services
+
+  -installCert      -- Install Certification Authority certificate
+  -renewCert        -- Renew Certification Authority certificate
+
+  -schema           -- Dump Certificate Schema
+  -view             -- Dump Certificate View
+  -db               -- Dump Raw Database
+  -deleterow        -- Delete server database row
+
+  -backup           -- Backup Active Directory Certificate Services
+  -backupDB         -- Backup Active Directory Certificate Services database
+  -backupKey        -- Backup Active Directory Certificate Services certificate and private key
+  -restore          -- Restore Active Directory Certificate Services
+  -restoreDB        -- Restore Active Directory Certificate Services database
+  -restoreKey       -- Restore Active Directory Certificate Services certificate and private key
+  -importPFX        -- Import certificate and private key
+  -dynamicfilelist  -- Display dynamic file List
+  -databaselocations -- Display database locations
+  -hashfile         -- Generate and display cryptographic hash over a file
+
+  -store            -- Dump certificate store
+  -enumstore        -- Enumerate certificate stores
+  -addstore         -- Add certificate to store
+  -delstore         -- Delete certificate from store
+  -verifystore      -- Verify certificate in store
+  -repairstore      -- Repair key association or update certificate properties or key security descriptor
+  -viewstore        -- Dump certificate store
+  -viewdelstore     -- Delete certificate from store
+  -UI               -- invoke CryptUI
+  -attest           -- Verify Key Attestation Request
+
+  -dsPublish        -- Publish certificate or CRL to Active Directory
+
+  -ADTemplate       -- Display AD templates
+  -Template         -- Display Enrollment Policy templates
+  -TemplateCAs      -- Display CAs for template
+  -CATemplates      -- Display templates for CA
+  -SetCASites       -- Manage Site Names for CAs
+  -enrollmentServerURL -- Display, add or delete enrollment server URLs associated with a CA
+  -ADCA             -- Display AD CAs
+  -CA               -- Display Enrollment Policy CAs
+  -Policy           -- Display Enrollment Policy
+  -PolicyCache      -- Display or delete Enrollment Policy Cache entries
+  -CredStore        -- Display, add or delete Credential Store entries
+  -InstallDefaultTemplates -- Install default certificate templates
+  -URLCache         -- Display or delete URL cache entries
+  -pulse            -- Pulse autoenrollment event or NGC task
+  -MachineInfo      -- Display Active Directory machine object information
+  -DCInfo           -- Display domain controller information
+  -EntInfo          -- Display enterprise information
+  -TCAInfo          -- Display CA information
+  -SCInfo           -- Display smart card information
+
+  -SCRoots          -- Manage smart card root certificates
+
+  -DeleteHelloContainer -- Delete Hello Logon container.  
+     ** Users need to sign out after using this option for it to complete. **
+  -verifykeys       -- Verify public/private key set
+  -verify           -- Verify certificate, CRL or chain
+  -verifyCTL        -- Verify AuthRoot or Disallowed Certificates CTL
+  -syncWithWU       -- Sync with Windows Update
+  -generateSSTFromWU -- Generate SST from Windows Update
+  -generatePinRulesCTL -- Generate Pin Rules CTL
+  -downloadOcsp     -- Download OCSP Responses and Write to Directory
+  -generateHpkpHeader -- Generate HPKP header using certificates in specified file or directory
+  -flushCache       -- Flush specified caches in selected process, such as, lsass.exe
+  -addEccCurve      -- Add ECC Curve
+  -deleteEccCurve   -- Delete ECC Curve
+  -displayEccCurve  -- Display ECC Curve
+  -sign             -- Re-sign CRL or certificate
+
+  -vroot            -- Create/delete web virtual roots and file shares
+  -vocsproot        -- Create/delete web virtual roots for OCSP web proxy
+  -addEnrollmentServer -- Add an Enrollment Server application
+  -deleteEnrollmentServer -- Delete an Enrollment Server application
+  -addPolicyServer  -- Add a Policy Server application
+  -deletePolicyServer -- Delete a Policy Server application
+  -oid              -- Display ObjectId or set display name
+  -error            -- Display error code message text
+  -getreg           -- Display registry value
+  -setreg           -- Set registry value
+  -delreg           -- Delete registry value
+
+  -ImportKMS        -- Import user keys and certificates into server database for key archival
+  -ImportCert       -- Import a certificate file into the database
+  -GetKey           -- Retrieve archived private key recovery blob, generate a recovery script,
+      or recover archived keys
+  -RecoverKey       -- Recover archived private key
+  -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
+
+  -add-chain        -- (-AddChain) Add certificate chain
+  -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
+  -get-sth          -- (-GetSTH) Get signed tree head
+  -get-sth-consistency -- (-GetSTHConsistency) Get signed tree head changes
+  -get-proof-by-hash -- (-GetProofByHash) Get proof by hash
+  -get-entries      -- (-GetEntries) Get entries
+  -get-roots        -- (-GetRoots) Get roots
+  -get-entry-and-proof -- (-GetEntryAndProof) Get entry and proof
+  -VerifyCT         -- Verify certificate SCT
+  -?                -- Display this usage message
+
+
+CertUtil -?              -- Display a verb list (command list)
+CertUtil -dump -?        -- Display help text for the "dump" verb
+CertUtil -v -?           -- Display all help text for all verbs
+
+CertUtil: -? command completed successfully.
+
+.DESCRIPTION See help for C:/Windows/system32/certutil.exe
+
+.PARAMETER CAFullName
+Specify the Full Name of the Certificate Authority in the form 'FQDN\CA Name'
+
+
+.PARAMETER SetReg
+Specify EditFlags
+
+
+.PARAMETER Flag
+Specify Flag to Enable
+
+
+
+#>
+}
+
+
+function Disable-PCEditFlag
+{
+[PowerShellCustomFunctionAttribute(RequiresElevation=$False)]
+[CmdletBinding()]
+
+param(
+[Parameter(Mandatory=$true,ParameterSetName='Default')]
+[string]$CAFullName,
+[Parameter(ParameterSetName='Default')]
+[PSDefaultValue(Value="policy\EditFlags")]
+[string]$SetReg = "policy\EditFlags",
+[ValidateSet('EDITF_REQUESTEXTENSIONLIST','EDITF_ENABLEREQUESTEXTENSIONS','EDITF_DISABLEEXTENSIONLIST','EDITF_ADDOLDKEYUSAGE','EDITF_ADDOLDCERTTYPE','EDITF_ATTRIBUTEENDDATE','EDITF_BASICCONSTRAINTSCRITICAL','EDITF_BASICCONSTRAINTSCA','EDITF_ENABLEAKIKEYID','EDITF_ATTRIBUTECA','EDITF_IGNOREREQUESTERGROUP','EDITF_ENABLEAKIISSUERNAME','EDITF_ENABLEAKIISSUERSERIAL','EDITF_ENABLEAKICRITICAL','EDITF_SERVERUPGRADED','EDITF_ATTRIBUTEEKU','EDITF_ENABLEDEFAULTSMIME','EDITF_EMAILOPTIONAL','EDITF_ATTRIBUTESUBJECTALTNAME2','EDITF_ENABLELDAPREFERRALS','EDITF_ENABLECHASECLIENTDC','EDITF_AUDITCERTTEMPLATELOAD','EDITF_DISABLEOLDOSCNUPN','EDITF_DISABLELDAPPACKAGELIST','EDITF_ENABLEUPNMAP','EDITF_ENABLEOCSPREVNOCHECK','EDITF_ENABLERENEWONBEHALFOF')]
+[Parameter(Mandatory=$true,ParameterSetName='Default')]
+[string]$Flag
+    )
+
+BEGIN {
+    $PSNativeCommandUseErrorActionPreference = $false
+    $__CrescendoNativeErrorQueue = [System.Collections.Queue]::new()
+    $__PARAMETERMAP = @{
+         CAFullName = @{
+               OriginalName = '-config'
+               OriginalPosition = '0'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $False
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+         SetReg = @{
+               OriginalName = '-setreg'
+               OriginalPosition = '1'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $False
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+         Flag = @{
+               OriginalName = '-'
+               OriginalPosition = '2'
+               Position = '2147483647'
+               ParameterType = 'string'
+               ApplyToExecutable = $False
+               NoGap = $True
+               ArgumentTransform = '$args'
+               ArgumentTransformType = 'inline'
+               }
+    }
+
+    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+}
+
+PROCESS {
+    $__boundParameters = $PSBoundParameters
+    $__defaultValueParameters = $PSCmdlet.MyInvocation.MyCommand.Parameters.Values.Where({$_.Attributes.Where({$_.TypeId.Name -eq "PSDefaultValueAttribute"})}).Name
+    $__defaultValueParameters.Where({ !$__boundParameters["$_"] }).ForEach({$__boundParameters["$_"] = get-variable -value $_})
+    $__commandArgs = @()
+    $MyInvocation.MyCommand.Parameters.Values.Where({$_.SwitchParameter -and $_.Name -notmatch "Debug|Whatif|Confirm|Verbose" -and ! $__boundParameters[$_.Name]}).ForEach({$__boundParameters[$_.Name] = [switch]::new($false)})
+    if ($__boundParameters["Debug"]){wait-debugger}
+    $__commandArgs += '-v'
+    foreach ($paramName in $__boundParameters.Keys|
+            Where-Object {!$__PARAMETERMAP[$_].ApplyToExecutable}|
+            Where-Object {!$__PARAMETERMAP[$_].ExcludeAsArgument}|
+            Sort-Object {$__PARAMETERMAP[$_].OriginalPosition}) {
+        $value = $__boundParameters[$paramName]
+        $param = $__PARAMETERMAP[$paramName]
+        if ($param) {
+            if ($value -is [switch]) {
+                 if ($value.IsPresent) {
+                     if ($param.OriginalName) { $__commandArgs += $param.OriginalName }
+                 }
+                 elseif ($param.DefaultMissingValue) { $__commandArgs += $param.DefaultMissingValue }
+            }
+            elseif ( $param.NoGap ) {
+                # if a transform is specified, use it and the construction of the values is up to the transform
+                if($param.ArgumentTransform -ne '$args') {
+                    $transform = $param.ArgumentTransform
+                    if($param.ArgumentTransformType -eq 'inline') {
+                        $transform = [scriptblock]::Create($param.ArgumentTransform)
+                    }
+                    $__commandArgs += & $transform $value
+                }
+                else {
+                    $pFmt = "{0}{1}"
+                    # quote the strings if they have spaces
+                    if($value -match "\s") { $pFmt = "{0}""{1}""" }
+                    $__commandArgs += $pFmt -f $param.OriginalName, $value
+                }
+            }
+            else {
+                if($param.OriginalName) { $__commandArgs += $param.OriginalName }
+                if($param.ArgumentTransformType -eq 'inline') {
+                   $transform = [scriptblock]::Create($param.ArgumentTransform)
+                }
+                else {
+                   $transform = $param.ArgumentTransform
+                }
+                $__commandArgs += & $transform $value
+            }
+        }
+    }
+    $__commandArgs = $__commandArgs | Where-Object {$_ -ne $null}
+    if ($__boundParameters["Debug"]){wait-debugger}
+    if ( $__boundParameters["Verbose"]) {
+         Write-Verbose -Verbose -Message "C:/Windows/system32/certutil.exe"
+         $__commandArgs | Write-Verbose -Verbose
+    }
+    $__handlerInfo = $__outputHandlers[$PSCmdlet.ParameterSetName]
+    if (! $__handlerInfo ) {
+        $__handlerInfo = $__outputHandlers["Default"] # Guaranteed to be present
+    }
+    $__handler = $__handlerInfo.Handler
+    if ( $PSCmdlet.ShouldProcess("C:/Windows/system32/certutil.exe $__commandArgs")) {
+    # check for the application and throw if it cannot be found
+        if ( -not (Get-Command -ErrorAction Ignore "C:/Windows/system32/certutil.exe")) {
+          throw "Cannot find executable 'C:/Windows/system32/certutil.exe'"
+        }
+        if ( $__handlerInfo.StreamOutput ) {
+            if ( $null -eq $__handler ) {
+                & "C:/Windows/system32/certutil.exe" $__commandArgs
+            }
+            else {
+                & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError | & $__handler
+            }
+        }
+        else {
+            $result = & "C:/Windows/system32/certutil.exe" $__commandArgs 2>&1| Push-CrescendoNativeError
+            & $__handler $result
+        }
+    }
+    # be sure to let the user know if there are any errors
+    Pop-CrescendoNativeError -EmitAsError
+  } # end PROCESS
+
+<#
+.SYNOPSIS
+
+Verbs:
+  -dump             -- Dump configuration information or file
+  -dumpPFX          -- Dump PFX structure
+  -asn              -- Parse ASN.1 file
+
+  -decodehex        -- Decode hexadecimal-encoded file
+  -decode           -- Decode Base64-encoded file
+  -encode           -- Encode file to Base64
+
+  -deny             -- Deny pending request
+  -resubmit         -- Resubmit pending request
+  -setattributes    -- Set attributes for pending request
+  -setextension     -- Set extension for pending request
+  -revoke           -- Revoke Certificate
+  -isvalid          -- Display current certificate disposition
+
+  -getconfig        -- Get default configuration string
+  -ping             -- Ping Active Directory Certificate Services Request interface
+  -pingadmin        -- Ping Active Directory Certificate Services Admin interface
+  -CAInfo           -- Display CA Information
+  -ca.cert          -- Retrieve the CA's certificate
+  -ca.chain         -- Retrieve the CA's certificate chain
+  -GetCRL           -- Get CRL
+  -CRL              -- Publish new CRLs [or delta CRLs only]
+  -shutdown         -- Shutdown Active Directory Certificate Services
+
+  -installCert      -- Install Certification Authority certificate
+  -renewCert        -- Renew Certification Authority certificate
+
+  -schema           -- Dump Certificate Schema
+  -view             -- Dump Certificate View
+  -db               -- Dump Raw Database
+  -deleterow        -- Delete server database row
+
+  -backup           -- Backup Active Directory Certificate Services
+  -backupDB         -- Backup Active Directory Certificate Services database
+  -backupKey        -- Backup Active Directory Certificate Services certificate and private key
+  -restore          -- Restore Active Directory Certificate Services
+  -restoreDB        -- Restore Active Directory Certificate Services database
+  -restoreKey       -- Restore Active Directory Certificate Services certificate and private key
+  -importPFX        -- Import certificate and private key
+  -dynamicfilelist  -- Display dynamic file List
+  -databaselocations -- Display database locations
+  -hashfile         -- Generate and display cryptographic hash over a file
+
+  -store            -- Dump certificate store
+  -enumstore        -- Enumerate certificate stores
+  -addstore         -- Add certificate to store
+  -delstore         -- Delete certificate from store
+  -verifystore      -- Verify certificate in store
+  -repairstore      -- Repair key association or update certificate properties or key security descriptor
+  -viewstore        -- Dump certificate store
+  -viewdelstore     -- Delete certificate from store
+  -UI               -- invoke CryptUI
+  -attest           -- Verify Key Attestation Request
+
+  -dsPublish        -- Publish certificate or CRL to Active Directory
+
+  -ADTemplate       -- Display AD templates
+  -Template         -- Display Enrollment Policy templates
+  -TemplateCAs      -- Display CAs for template
+  -CATemplates      -- Display templates for CA
+  -SetCASites       -- Manage Site Names for CAs
+  -enrollmentServerURL -- Display, add or delete enrollment server URLs associated with a CA
+  -ADCA             -- Display AD CAs
+  -CA               -- Display Enrollment Policy CAs
+  -Policy           -- Display Enrollment Policy
+  -PolicyCache      -- Display or delete Enrollment Policy Cache entries
+  -CredStore        -- Display, add or delete Credential Store entries
+  -InstallDefaultTemplates -- Install default certificate templates
+  -URLCache         -- Display or delete URL cache entries
+  -pulse            -- Pulse autoenrollment event or NGC task
+  -MachineInfo      -- Display Active Directory machine object information
+  -DCInfo           -- Display domain controller information
+  -EntInfo          -- Display enterprise information
+  -TCAInfo          -- Display CA information
+  -SCInfo           -- Display smart card information
+
+  -SCRoots          -- Manage smart card root certificates
+
+  -DeleteHelloContainer -- Delete Hello Logon container.  
+     ** Users need to sign out after using this option for it to complete. **
+  -verifykeys       -- Verify public/private key set
+  -verify           -- Verify certificate, CRL or chain
+  -verifyCTL        -- Verify AuthRoot or Disallowed Certificates CTL
+  -syncWithWU       -- Sync with Windows Update
+  -generateSSTFromWU -- Generate SST from Windows Update
+  -generatePinRulesCTL -- Generate Pin Rules CTL
+  -downloadOcsp     -- Download OCSP Responses and Write to Directory
+  -generateHpkpHeader -- Generate HPKP header using certificates in specified file or directory
+  -flushCache       -- Flush specified caches in selected process, such as, lsass.exe
+  -addEccCurve      -- Add ECC Curve
+  -deleteEccCurve   -- Delete ECC Curve
+  -displayEccCurve  -- Display ECC Curve
+  -sign             -- Re-sign CRL or certificate
+
+  -vroot            -- Create/delete web virtual roots and file shares
+  -vocsproot        -- Create/delete web virtual roots for OCSP web proxy
+  -addEnrollmentServer -- Add an Enrollment Server application
+  -deleteEnrollmentServer -- Delete an Enrollment Server application
+  -addPolicyServer  -- Add a Policy Server application
+  -deletePolicyServer -- Delete a Policy Server application
+  -oid              -- Display ObjectId or set display name
+  -error            -- Display error code message text
+  -getreg           -- Display registry value
+  -setreg           -- Set registry value
+  -delreg           -- Delete registry value
+
+  -ImportKMS        -- Import user keys and certificates into server database for key archival
+  -ImportCert       -- Import a certificate file into the database
+  -GetKey           -- Retrieve archived private key recovery blob, generate a recovery script,
+      or recover archived keys
+  -RecoverKey       -- Recover archived private key
+  -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
+
+  -add-chain        -- (-AddChain) Add certificate chain
+  -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
+  -get-sth          -- (-GetSTH) Get signed tree head
+  -get-sth-consistency -- (-GetSTHConsistency) Get signed tree head changes
+  -get-proof-by-hash -- (-GetProofByHash) Get proof by hash
+  -get-entries      -- (-GetEntries) Get entries
+  -get-roots        -- (-GetRoots) Get roots
+  -get-entry-and-proof -- (-GetEntryAndProof) Get entry and proof
+  -VerifyCT         -- Verify certificate SCT
+  -?                -- Display this usage message
+
+
+CertUtil -?              -- Display a verb list (command list)
+CertUtil -dump -?        -- Display help text for the "dump" verb
+CertUtil -v -?           -- Display all help text for all verbs
+
+CertUtil: -? command completed successfully.
+
+.DESCRIPTION See help for C:/Windows/system32/certutil.exe
+
+.PARAMETER CAFullName
+Specify the Full Name of the Certificate Authority in the form 'FQDN\CA Name'
+
+
+.PARAMETER SetReg
+Specify EditFlags
+
+
+.PARAMETER Flag
+Specify Flag to Enable
 
 
 
@@ -1900,6 +2492,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -2177,6 +2770,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain
@@ -2453,6 +3047,7 @@ Verbs:
       or recover archived keys
   -RecoverKey       -- Recover archived private key
   -MergePFX         -- Merge PFX files
+  -ConvertEPF       -- Convert PFX files to EPF file
 
   -add-chain        -- (-AddChain) Add certificate chain
   -add-pre-chain    -- (-AddPrechain) Add pre-certificate chain

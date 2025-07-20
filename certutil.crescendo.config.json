@@ -238,6 +238,112 @@
             ]
         },
         {
+            "Verb": "Enable",
+            "Noun": "PCEditFlag",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["-v"],
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-setreg",
+                    "Name": "SetReg",
+                    "DefaultValue": "policy\\EditFlags",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify EditFlags",
+                    "OriginalPosition": 1
+                },
+                                {
+                    "OriginalName": "+",
+                    "Name": "Flag",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "NoGap": true,
+                    "AdditionalParameterAttributes": [
+                        "[ValidateSet('EDITF_REQUESTEXTENSIONLIST','EDITF_ENABLEREQUESTEXTENSIONS','EDITF_DISABLEEXTENSIONLIST','EDITF_ADDOLDKEYUSAGE','EDITF_ADDOLDCERTTYPE','EDITF_ATTRIBUTEENDDATE','EDITF_BASICCONSTRAINTSCRITICAL','EDITF_BASICCONSTRAINTSCA','EDITF_ENABLEAKIKEYID','EDITF_ATTRIBUTECA','EDITF_IGNOREREQUESTERGROUP','EDITF_ENABLEAKIISSUERNAME','EDITF_ENABLEAKIISSUERSERIAL','EDITF_ENABLEAKICRITICAL','EDITF_SERVERUPGRADED','EDITF_ATTRIBUTEEKU','EDITF_ENABLEDEFAULTSMIME','EDITF_EMAILOPTIONAL','EDITF_ATTRIBUTESUBJECTALTNAME2','EDITF_ENABLELDAPREFERRALS','EDITF_ENABLECHASECLIENTDC','EDITF_AUDITCERTTEMPLATELOAD','EDITF_DISABLEOLDOSCNUPN','EDITF_DISABLELDAPPACKAGELIST','EDITF_ENABLEUPNMAP','EDITF_ENABLEOCSPREVNOCHECK','EDITF_ENABLERENEWONBEHALFOF')]"
+                    ],
+                    "Description": "Specify Flag to Enable",
+                    "OriginalPosition": 2
+                }
+            ],
+            "Examples": []
+        },
+                {
+            "Verb": "Disable",
+            "Noun": "PCEditFlag",
+            "OriginalName": "C:/Windows/system32/certutil.exe",
+            "OriginalCommandElements": ["-v"],
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-setreg",
+                    "Name": "SetReg",
+                    "DefaultValue": "policy\\EditFlags",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify EditFlags",
+                    "OriginalPosition": 1
+                },
+                                {
+                    "OriginalName": "-",
+                    "Name": "Flag",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "NoGap": true,
+                    "AdditionalParameterAttributes": [
+                        "[ValidateSet('EDITF_REQUESTEXTENSIONLIST','EDITF_ENABLEREQUESTEXTENSIONS','EDITF_DISABLEEXTENSIONLIST','EDITF_ADDOLDKEYUSAGE','EDITF_ADDOLDCERTTYPE','EDITF_ATTRIBUTEENDDATE','EDITF_BASICCONSTRAINTSCRITICAL','EDITF_BASICCONSTRAINTSCA','EDITF_ENABLEAKIKEYID','EDITF_ATTRIBUTECA','EDITF_IGNOREREQUESTERGROUP','EDITF_ENABLEAKIISSUERNAME','EDITF_ENABLEAKIISSUERSERIAL','EDITF_ENABLEAKICRITICAL','EDITF_SERVERUPGRADED','EDITF_ATTRIBUTEEKU','EDITF_ENABLEDEFAULTSMIME','EDITF_EMAILOPTIONAL','EDITF_ATTRIBUTESUBJECTALTNAME2','EDITF_ENABLELDAPREFERRALS','EDITF_ENABLECHASECLIENTDC','EDITF_AUDITCERTTEMPLATELOAD','EDITF_DISABLEOLDOSCNUPN','EDITF_DISABLELDAPPACKAGELIST','EDITF_ENABLEUPNMAP','EDITF_ENABLEOCSPREVNOCHECK','EDITF_ENABLERENEWONBEHALFOF')]"
+                    ],
+                    "Description": "Specify Flag to Enable",
+                    "OriginalPosition": 2
+                }
+            ],
+            "Examples": []
+        },
+        {
             "Verb": "Get",
             "Noun": "PCInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
