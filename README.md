@@ -20,6 +20,10 @@ Import-Module .\PSCertutil\PSCertutil.psd1
 ```
 
 ## Current Functions
+* **Disable-PCEditFlag:** Disables the flags configured via the policy\EditFlags registry entry
+* **Disable-PCInterfaceFlag:** Disables the flags configured via the CA\InterfaceFlags registry entry
+* **Enable-PCEditFlag:** Enables the flags configured via the policy\EditFlags registry entry
+* **Enable-PCInterfaceFlag:** Enables the flags configured via the CA\InterfaceFlags registry entry
 * **Get-PCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks. Will soon have human-readable output for auditing configuration.
 * **Get-PCCAAdministrator:** Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
 * **Get-PCCertificateManager:** Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
