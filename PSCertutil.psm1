@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 07/20/2025 16:15:41
+# Generated at: 07/28/2025 19:02:29
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -1715,7 +1715,9 @@ BEGIN {
                }
     }
 
-    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+    $__outputHandlers = @{
+        Default = @{ StreamOutput = $False; Handler = 'parseModifyFlag' }
+    }
 }
 
 PROCESS {
@@ -2008,7 +2010,9 @@ BEGIN {
                }
     }
 
-    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+    $__outputHandlers = @{
+        Default = @{ StreamOutput = $False; Handler = 'parseModifyFlag' }
+    }
 }
 
 PROCESS {
@@ -2579,7 +2583,9 @@ BEGIN {
                }
     }
 
-    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+    $__outputHandlers = @{
+        Default = @{ StreamOutput = $False; Handler = 'parseModifyFlag' }
+    }
 }
 
 PROCESS {
@@ -2872,7 +2878,9 @@ BEGIN {
                }
     }
 
-    $__outputHandlers = @{ Default = @{ StreamOutput = $true; Handler = { $input; Pop-CrescendoNativeError -EmitAsError } } }
+    $__outputHandlers = @{
+        Default = @{ StreamOutput = $False; Handler = 'parseModifyFlag' }
+    }
 }
 
 PROCESS {
@@ -3865,6 +3873,15 @@ function parseEditFlag {
     }
 
     $EditFlagCollection
+}
+function parseModifyFlag {
+    param (
+        $ModifyFlag
+    )
+
+    if ($ModifyFlag -notcontains 'CertUtil: -setreg command completed successfully.') {
+        throw $ModifyFlag
+    }
 }
 function parseInterfaceFlag {
     param (

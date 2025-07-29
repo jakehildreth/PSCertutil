@@ -288,7 +288,14 @@
                     "OriginalPosition": 2
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseModifyFlag"
+                }
+            ]
         },
         {
             "Verb": "Disable",
@@ -341,7 +348,14 @@
                     "OriginalPosition": 2
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseModifyFlag"
+                }
+            ]
         },
         {
             "Verb": "Get",
@@ -439,7 +453,14 @@
                     "OriginalPosition": 2
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseModifyFlag"
+                }
+            ]
         },
         {
             "Verb": "Disable",
@@ -492,7 +513,14 @@
                     "OriginalPosition": 2
                 }
             ],
-            "Examples": []
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseModifyFlag"
+                }
+            ]
         },
         {
             "Verb": "Get",
