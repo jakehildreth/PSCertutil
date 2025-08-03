@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 07/28/2025 19:02:29
+# Generated at: 08/03/2025 07:05:50
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -3855,7 +3855,7 @@ function parseEditFlag {
         $EditFlag
     )
 
-    [array]$EditFlagCollection = $EditFlag | ForEach-Object {
+    $EditFlag | ForEach-Object {
         $Flag = ($_.trim().split(' -- '))[0] | Select-String 'EDITF_'
         if ($null -ne $Flag) {
             if ($Flag -match '^\(EDITF_') {
@@ -3866,13 +3866,11 @@ function parseEditFlag {
             }
 
             [PSCustomObject]@{
-                EditFlag = $Flag
+                EditFlag = $Flag.ToString()
                 Enabled  = $Enabled
             }
         }
     }
-
-    $EditFlagCollection
 }
 function parseModifyFlag {
     param (
@@ -3880,7 +3878,9 @@ function parseModifyFlag {
     )
 
     if ($ModifyFlag -notcontains 'CertUtil: -setreg command completed successfully.') {
-        throw $ModifyFlag
+        $exception = $ModifyFlag -join ', '
+        # TODO Start returning more specific error messages.
+        [System.Management.Automation.ErrorRecord]::new($exception, 'CustomStringError', 'NotSpecified', $null)
     }
 }
 function parseInterfaceFlag {

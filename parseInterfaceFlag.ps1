@@ -14,7 +14,7 @@ function parseInterfaceFlag {
             }
 
             [PSCustomObject]@{
-                InterfaceFlag = $Flag
+                InterfaceFlag = $Flag.ToString()
                 Enabled       = $Enabled
             }
         }

@@ -3,7 +3,7 @@ function parseEditFlag {
         $EditFlag
     )
 
-    [array]$EditFlagCollection = $EditFlag | ForEach-Object {
+    $EditFlag | ForEach-Object {
         $Flag = ($_.trim().split(' -- '))[0] | Select-String 'EDITF_'
         if ($null -ne $Flag) {
             if ($Flag -match '^\(EDITF_') {
@@ -14,11 +14,9 @@ function parseEditFlag {
             }
 
             [PSCustomObject]@{
-                EditFlag = $Flag
+                EditFlag = $Flag.ToString()
                 Enabled  = $Enabled
             }
         }
     }
-
-    $EditFlagCollection
 }
