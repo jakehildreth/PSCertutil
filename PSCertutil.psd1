@@ -21,16 +21,16 @@ ModuleVersion = '0.0.1'
 GUID = '357478c8-bec5-4ee3-bc2e-21d2357b2dd1'
 
 # Author of this module
-Author = 'Administrator'
+Author = 'Jake Hildreth'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Gilmour Technologies Ltd'
 
 # Copyright statement for this module
-Copyright = '(c) Administrator. All rights reserved.'
+Copyright = '(c) 2025 Jake Hildreth. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'A PowerShell wrapper for certutil.exe'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1.0'
