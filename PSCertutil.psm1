@@ -1,7 +1,7 @@
 # Module created by Microsoft.PowerShell.Crescendo
 # Version: 1.1.0
 # Schema: https://aka.ms/PowerShell/Crescendo/Schemas/2022-06
-# Generated at: 08/03/2025 07:05:50
+# Generated at: 12/16/2025 16:38:56
 class PowerShellCustomFunctionAttribute : System.Attribute {
     [bool]$RequiresElevation
     [string]$Source
@@ -3682,9 +3682,9 @@ function parseCAAdministrator {
     )
 
     [array] $CAAdministratorCollection = $CAAdministrator | ForEach-Object {
-        if ($_ -match '^.*Allow.*CA Administrator.*?\s+([^\s\\]+\\.+)$') {
+        if ($_ -match 'CA Administrator' -and $_ -split '\t' | Select-Object -Last 1) {
             [PSCustomObject]@{
-                CAAdministrator = $matches[1]
+                CAAdministrator = ($_ -split '\t' | Select-Object -Last 1).Trim()
             }
         }
     }
@@ -3697,9 +3697,9 @@ function parseCertificateManager {
     )
 
     [array] $CertificateManagerCollection = $CertificateManager | ForEach-Object {
-        if ($_ -match '^.*Allow.*Certificate Manager.*?\s+([^\s\\]+\\.+)$') {
+        if ($_ -match 'Certificate Manager' -and $_ -split '\t' | Select-Object -Last 1) {
             [PSCustomObject]@{
-                CertificateManager = $matches[1]
+                CertificateManager = ($_ -split '\t' | Select-Object -Last 1).Trim()
             }
         }
     }
@@ -3899,7 +3899,7 @@ function parseInterfaceFlag {
             }
 
             [PSCustomObject]@{
-                InterfaceFlag = $Flag
+                InterfaceFlag = $Flag.ToString()
                 Enabled       = $Enabled
             }
         }
