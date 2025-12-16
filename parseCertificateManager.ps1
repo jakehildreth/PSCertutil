@@ -4,9 +4,9 @@ function parseCertificateManager {
     )
 
     [array] $CertificateManagerCollection = $CertificateManager | ForEach-Object {
-        if ($_ -match '^.*Allow.*Certificate Manager.*?\s+([^\s\\]+\\.+)$') {
+        if ($_ -match 'Certificate Manager' -and $_ -split '\t' | Select-Object -Last 1) {
             [PSCustomObject]@{
-                CertificateManager = $matches[1]
+                CertificateManager = ($_ -split '\t' | Select-Object -Last 1).Trim()
             }
         }
     }
