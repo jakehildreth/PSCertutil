@@ -3,7 +3,7 @@
     "commands": [
         {
             "Verb": "Get",
-            "Noun": "PCDump",
+            "Noun": "PSCDump",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -16,7 +16,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCAAdministrator",
+            "Noun": "PSCCAAdministrator",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -60,7 +60,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCCertificateManager",
+            "Noun": "PSCCertificateManager",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
@@ -104,7 +104,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCEnrollmentAgent",
+            "Noun": "PSCEnrollmentAgent",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -149,7 +149,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCOfficerRight",
+            "Noun": "PSCOfficerRight",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -194,7 +194,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCEditFlag",
+            "Noun": "PSCEditFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -239,7 +239,7 @@
         },
         {
             "Verb": "Enable",
-            "Noun": "PCEditFlag",
+            "Noun": "PSCEditFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -299,7 +299,7 @@
         },
         {
             "Verb": "Disable",
-            "Noun": "PCEditFlag",
+            "Noun": "PSCEditFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -359,7 +359,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCInterfaceFlag",
+            "Noun": "PSCInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -404,7 +404,7 @@
         },
         {
             "Verb": "Enable",
-            "Noun": "PCInterfaceFlag",
+            "Noun": "PSCInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -464,7 +464,7 @@
         },
         {
             "Verb": "Disable",
-            "Noun": "PCInterfaceFlag",
+            "Noun": "PSCInterfaceFlag",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -524,7 +524,7 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCDisableExtensionList",
+            "Noun": "PSCDisableExtensionList",
             "OriginalName": "C:/Windows/system32/certutil.exe",
             "OriginalCommandElements": ["-v"],
             "Platform": [
@@ -569,7 +569,51 @@
         },
         {
             "Verb": "Get",
-            "Noun": "PCAuditFilter",
+            "Noun": "PSCAuditFilter",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-getreg",
+                    "Name": "GetReg",
+                    "DefaultValue": "CA\\AuditFilter",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify AuditFilter",
+                    "OriginalPosition": 1   
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseAuditFilter"
+                }
+            ]
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PSCAuditFilter",
             "OriginalName": "C:\\Windows\\system32\\certutil.exe",
             "Platform": [
                 "Windows"
