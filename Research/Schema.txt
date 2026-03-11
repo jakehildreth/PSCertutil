@@ -1,0 +1,85 @@
+Schema:
+  Column Name                   Localized Name                Type    MaxLength
+  ----------------------------  ----------------------------  ------  ---------
+  Request.RequestID             Request ID                    Long    4 -- Indexed
+  Request.RawRequest            Binary Request                Binary  65536
+  Request.RawArchivedKey        Archived Key                  Binary  65536
+  Request.KeyRecoveryHashes     Key Recovery Agent Hashes     String  8192
+  Request.RawOldCertificate     Old Certificate               Binary  16384
+  Request.RequestAttributes     Request Attributes            String  32768
+  Request.RequestType           Request Type                  Long    4
+  Request.RequestFlags          Request Flags                 Long    4
+  Request.StatusCode            Request Status Code           Long    4
+  Request.Disposition           Request Disposition           Long    4 -- Indexed
+  Request.DispositionMessage    Request Disposition Message   String  8192
+  Request.SubmittedWhen         Request Submission Date       Date    8 -- Indexed
+  Request.ResolvedWhen          Request Resolution Date       Date    8 -- Indexed
+  Request.RevokedWhen           Revocation Date               Date    8
+  Request.RevokedEffectiveWhen  Effective Revocation Date     Date    8 -- Indexed
+  Request.RevokedReason         Revocation Reason             Long    4
+  Request.RequesterName         Requester Name                String  2048 -- Indexed
+  Request.CallerName            Caller Name                   String  2048 -- Indexed
+  Request.SignerPolicies        Signer Policies               String  8192
+  Request.SignerApplicationPolicies  Signer Application Policies   String  8192
+  Request.Officer               Officer                       Long    4
+  Request.DistinguishedName     Request Distinguished Name    String  8192
+  Request.RawName               Request Binary Name           Binary  4096
+  Request.Country               Request Country/Region        String  8192
+  Request.Organization          Request Organization          String  8192
+  Request.OrgUnit               Request Organization Unit     String  8192
+  Request.CommonName            Request Common Name           String  8192
+  Request.Locality              Request City                  String  8192
+  Request.State                 Request State                 String  8192
+  Request.Title                 Request Title                 String  8192
+  Request.GivenName             Request First Name            String  8192
+  Request.Initials              Request Initials              String  8192
+  Request.SurName               Request Last Name             String  8192
+  Request.DomainComponent       Request Domain Component      String  8192
+  Request.EMail                 Request Email Address         String  8192
+  Request.StreetAddress         Request Street Address        String  8192
+  Request.UnstructuredName      Request Unstructured Name     String  8192
+  Request.UnstructuredAddress   Request Unstructured Address  String  8192
+  Request.DeviceSerialNumber    Request Device Serial Number  String  8192
+  Request.AttestationChallenge  Attestation Challenge         Binary  4096
+  Request.EndorsementKeyHash    Endorsement Key Hash          String  144 -- Indexed
+  Request.EndorsementCertificateHash  Endorsement Certificate Hash  String  144 -- Indexed
+  Request.RawPrecertificate     Binary Precertificate         Binary  16384
+  Request.CRLPartitionIndex     CRL Partition Index           Long    4 -- Indexed
+  Request.LinterCertificate     Binary Linter Certificate     Binary  16384
+  RequestID                     Issued Request ID             Long    4 -- Indexed
+  RawCertificate                Binary Certificate            Binary  16384
+  CertificateHash               Certificate Hash              String  128 -- Indexed
+  CertificateTemplate           Certificate Template          String  254 -- Indexed
+  EnrollmentFlags               Template Enrollment Flags     Long    4
+  GeneralFlags                  Template General Flags        Long    4
+  PrivatekeyFlags               Template Private Key Flags    Long    4
+  SerialNumber                  Serial Number                 String  128 -- Indexed
+  IssuerNameID                  Issuer Name ID                Long    4
+  NotBefore                     Certificate Effective Date    Date    8
+  NotAfter                      Certificate Expiration Date   Date    8 -- Indexed
+  SubjectKeyIdentifier          Issued Subject Key Identifier  String  128 -- Indexed
+  RawPublicKey                  Binary Public Key             Binary  4096
+  PublicKeyLength               Public Key Length             Long    4
+  PublicKeyAlgorithm            Public Key Algorithm          String  254
+  RawPublicKeyAlgorithmParameters  Public Key Algorithm Parameters  Binary  4096
+  PublishExpiredCertInCRL       Publish Expired Certificate in CRL  Long    4
+  UPN                           User Principal Name           String  2048 -- Indexed
+  DistinguishedName             Issued Distinguished Name     String  8192
+  RawName                       Issued Binary Name            Binary  4096
+  Country                       Issued Country/Region         String  8192
+  Organization                  Issued Organization           String  8192
+  OrgUnit                       Issued Organization Unit      String  8192
+  CommonName                    Issued Common Name            String  8192 -- Indexed
+  Locality                      Issued City                   String  8192
+  State                         Issued State                  String  8192
+  Title                         Issued Title                  String  8192
+  GivenName                     Issued First Name             String  8192
+  Initials                      Issued Initials               String  8192
+  SurName                       Issued Last Name              String  8192
+  DomainComponent               Issued Domain Component       String  8192
+  EMail                         Issued Email Address          String  8192
+  StreetAddress                 Issued Street Address         String  8192
+  UnstructuredName              Issued Unstructured Name      String  8192
+  UnstructuredAddress           Issued Unstructured Address   String  8192
+  DeviceSerialNumber            Issued Device Serial Number   String  8192
+CertUtil: -view command completed successfully.
