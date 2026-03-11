@@ -20,25 +20,25 @@ Import-Module .\PSCertutil\PSCertutil.psd1
 ```
 
 ## Current Functions
-* **Disable-PCEditFlag:** Disables the flags configured via the `policy\EditFlags` registry entry
-* **Disable-PCInterfaceFlag:** Disables the flags configured via the `CA\InterfaceFlags` registry entry
-* **Enable-PCEditFlag:** Enables the flags configured via the `policy\EditFlags` registry entry
-* **Enable-PCInterfaceFlag:** Enables the flags configured via the `CA\InterfaceFlags` registry entry
-* **Get-PCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks. Will soon have human-readable output for auditing configuration.
-* **Get-PCCAAdministrator:** Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
-* **Get-PCCertificateManager:** Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
-* **Get-PCDisableExtensionList:** Gets the `policy\DisableExtensionList` registry entry and returns objects for all disabled extensions. Used to perform ESC16 checks. Will soon have human-readable output for disabled extensions.
-* **Get-PCDump:** Identical to "certutil -v -dump". Currently unparsed.
-* **Get-PCEditFlag:** Gets the `policy\EditFlags` registry entry to display the current state of each edit flag. Used to perform ESC6 checks.
-* **Get-PCEnrollmentAgent:** Gets Enrollment Agent configuration. Properly restricting Enrollment Agent rights can prevent ESC3 attacks.
-* **Get-PCInterfaceFlag:** Gets the `CA\InterfaceFlags` registry entry to display the current state of each interface flag. Used to perform ESC11 checks.
-* **Get-PCOfficerRight:** Gets Officer Rights configuration. Properly restricting Officer Rights can make a wide range of attacks more difficult.
+* **Disable-PSCEditFlag:** Disables the flags configured via the `policy\EditFlags` registry entry
+* **Disable-PSCInterfaceFlag:** Disables the flags configured via the `CA\InterfaceFlags` registry entry
+* **Enable-PSCEditFlag:** Enables the flags configured via the `policy\EditFlags` registry entry
+* **Enable-PSCInterfaceFlag:** Enables the flags configured via the `CA\InterfaceFlags` registry entry
+* **Get-PSCAuditFilter:** Gets the integer value that represents the bitmask that configures auditing on a CA. Used in Auditing checks. Will soon have human-readable output for auditing configuration.
+* **Get-PSCCAAdministrator:** Gets all principals granted the "CA Administrator" role on a CA. Used to perform ESC7 checks.
+* **Get-PSCCertificateManager:** Gets all principals granted "Certificate Manager" role on a CA. Used to perform ESC7 checks.
+* **Get-PSCDisableExtensionList:** Gets the `policy\DisableExtensionList` registry entry and returns objects for all disabled extensions. Used to perform ESC16 checks. Will soon have human-readable output for disabled extensions.
+* **Get-PSCDump:** Identical to "certutil -v -dump". Currently unparsed.
+* **Get-PSCEditFlag:** Gets the `policy\EditFlags` registry entry to display the current state of each edit flag. Used to perform ESC6 checks.
+* **Get-PSCEnrollmentAgent:** Gets Enrollment Agent configuration. Properly restricting Enrollment Agent rights can prevent ESC3 attacks.
+* **Get-PSCInterfaceFlag:** Gets the `CA\InterfaceFlags` registry entry to display the current state of each interface flag. Used to perform ESC11 checks.
+* **Get-PSCOfficerRight:** Gets Officer Rights configuration. Properly restricting Officer Rights can make a wide range of attacks more difficult.
 
 ## Future Functions
-* **Get-PCRecentlyIssued**
-* **Get-PCRecentlyFailed** 
-* **Get-PCPendingRequests**/**Get-PCQueued**
-* **Get-PCEffective**/**Get-PCActive**
+* **Get-PSCRecentlyIssued**
+* **Get-PSCRecentlyFailed** 
+* **Get-PSCPendingRequests**/**Get-PSCQueued**
+* **Get-PSCEffective**/**Get-PSCActive**
 
 ## Thanks
 * Brainstorming new functions: [@techSpence](https://github.com/techspence)
