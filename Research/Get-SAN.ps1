@@ -7,7 +7,7 @@ $sanExtension = $null
 $asnData = $null
 
 # Get the binary certificate output
-$output = certutil -config $CAFullName -view -restrict "RequestID=5" -out "Binary Certificate,Request.CallerName"
+$output = certutil -v -view -config $CAFullName  -restrict "REquestId=1" -out "Binary Certificate,Request.CallerName"
 
 # Extract just the caller name
 $callerName = ($output | Select-String 'Caller Name: "(.+)"').Matches[0].Groups[1].Value
@@ -31,4 +31,5 @@ $san = ($asnData.Format($true) | Select-String 'Principal Name=(.+)').Matches[0]
 [PSCustomObject]@{
     CallerName = $callerName
     SAN        = $san
+    Certificate = $cert
 }

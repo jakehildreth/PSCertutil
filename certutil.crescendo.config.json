@@ -654,6 +654,118 @@
                     "Handler": "parseAuditFilter"
                 }
             ]
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PSCSanCertificate",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-view",
+                    "Name": "view",
+                    "DefaultValue": "",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-out",
+                    "Name": "Out",
+                    "DefaultValue": "'Binary Certificate,Request.CallerName'",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Dummy for -out",
+                    "OriginalPosition": 1   
+                },
+                {
+                    "OriginalName": "csv",
+                    "Name": "csv",
+                    "DefaultValue": "",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Dummy for csv",
+                    "OriginalPosition": 2   
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseSanCertificate"
+                }
+            ]
+        },
+        {
+            "Verb": "Get",
+            "Noun": "PSCLog",
+            "OriginalName": "C:\\Windows\\system32\\certutil.exe",
+            "Platform": [
+                "Windows"
+            ],
+            "SupportsShouldProcess": false,
+            "SupportsTransactions": false,
+            "NoInvocation": false,
+            "Parameters": [
+                {
+                    "OriginalName": "-config",
+                    "Name": "CAFullName",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": true,
+                    "Description": "Specify the Full Name of the Certificate Authority in the form 'FQDN\\CA Name'",
+                    "OriginalPosition": 0
+                },
+                {
+                    "OriginalName": "-view",
+                    "Name": "view",
+                    "DefaultValue": "csv",
+                    "ParameterType": "string",
+                    "ParameterSetName": [
+                        "Default"
+                    ],
+                    "Mandatory": false,
+                    "Description": "Dummy for -view",
+                    "OriginalPosition": 1
+                }
+            ],
+            "Examples": [],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Function",
+                    "Handler": "parseLog"
+                }
+            ]
         }
     ]
 }
