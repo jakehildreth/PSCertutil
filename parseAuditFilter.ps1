@@ -11,7 +11,9 @@ function parseAuditFilter {
             [string]$AuditFilter = $CertutilAudit | Select-String 'AuditFilter REG_DWORD = '
             [int]$AuditFilter = $AuditFilter.split('=')[1].trim()
         } catch {
-            [int]$AuditFilter = $null
+            # Parse failure (e.g. certutil errored): emit nothing so callers see
+            # a query failure, not a fabricated 0 that looks like "auditing disabled".
+            return
         }
     }
     [pscustomobject]@{
