@@ -18,7 +18,7 @@ ModuleVersion = '0.0.4'
 # CompatiblePSEditions = @()
 
 # ID used to uniquely identify this module
-GUID = 'fc392021-618d-4cfd-8e6a-414dc132268a'
+GUID = '357478c8-bec5-4ee3-bc2e-21d2357b2dd1'
 
 # Author of this module
 Author = 'Jake Hildreth'
@@ -27,10 +27,10 @@ Author = 'Jake Hildreth'
 CompanyName = 'Gilmour Technologies Ltd'
 
 # Copyright statement for this module
-Copyright = '(c) Jake Hildreth, Gilmour Technologies Ltd. All rights reserved.'
+Copyright = '(c) 2025-2026 Jake Hildreth, Gilmour Technologies Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'A PowerShell wrapper for certutil.exev'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1.0'
