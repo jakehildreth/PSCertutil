@@ -12,7 +12,7 @@
 RootModule = 'PSCertutil.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -21,13 +21,13 @@ ModuleVersion = '0.0.1'
 GUID = 'fc392021-618d-4cfd-8e6a-414dc132268a'
 
 # Author of this module
-Author = 'jhildreth'
+Author = 'Jake Hildreth'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Gilmour Technologies Ltd'
 
 # Copyright statement for this module
-Copyright = '(c) jhildreth. All rights reserved.'
+Copyright = '(c) Jake Hildreth, Gilmour Technologies Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
