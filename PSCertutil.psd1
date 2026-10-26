@@ -30,7 +30,7 @@ CompanyName = 'Gilmour Technologies Ltd'
 Copyright = '(c) 2025-2026 Jake Hildreth, Gilmour Technologies Ltd. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'A PowerShell wrapper for certutil.exev'
+Description = 'A PowerShell wrapper for certutil.exe'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1.0'
