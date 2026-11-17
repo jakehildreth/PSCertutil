@@ -1,6 +1,14 @@
 # PSCertutil - A Powershell Wrapper for certutil.exe
 Built w/ ❤️ and [Crescendo](https://github.com/PowerShell/Crescendo)
 
+## License
+
+MIT License w/Commons Clause - see [LICENSE](LICENSE) file for details.
+
+---
+
+Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
+
 `certutil.exe` is a very old-school way to interact with Active Directory Certificate Services. It's shockingly powerful, but its output *sucks* to work with in PowerShell.
 
 PSCertutil makes using `certutil.exe` a little more PowerShell-y:
